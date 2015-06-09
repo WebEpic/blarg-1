@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     render :show
+    # render partial :edit
   end
 
   def new
@@ -24,6 +25,23 @@ class PostsController < ApplicationController
     redirect_to posts_path
     # redirect_to post_path(@post)
   end
+
+  def edit
+    @post = Post.find(params['id'])
+    render :edit
+  end
+
+  def update
+    @post = Post.find(params['id'])
+    tags = params['tags'].split(", ")
+    tag_models = tags.map { |tag| Tag.find_or_create_by(name: tag) }
+    @post = @post.update_attributes(title: params[:title],
+                                    content: params[:content],
+                                    written_at: DateTime.now,
+                                    tags: tag_models)
+    redirect_to posts_path
+  end
+
 
   protected
   def get_page(n)

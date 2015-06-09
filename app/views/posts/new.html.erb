@@ -1,6 +1,5 @@
 <h2>New Post</h2>
 
-<% # Title, Tags, Text %>
 <!-- Title, Tags, Text -->
 
 <%= form_tag('/posts', class: 'post-form') do %>
@@ -9,10 +8,14 @@
     <%= text_field_tag(:title, nil, size: 40) %>
   </div>
 
+    </br>
+
   <div class="post-input">
     <%= label_tag(:tags, "Tags: ") %>
     <%= text_field_tag(:tags, nil, size: 40) %>
-  </div> 
+  </div>
+
+    </br> 
 
   <div class="post-input">
     <%= label_tag(:content, "Content: ") %>
@@ -20,7 +23,8 @@
     <%= text_area_tag(:content, nil, rows: 40, cols: 80) %>
   </div>
 
-  <br/>
+    <br/>
+  
   <div><%= submit_tag 'Save' %></div>
 <% end %>
 

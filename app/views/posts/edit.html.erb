@@ -1,0 +1,34 @@
+<h2>Edit Post</h2>
+
+<!-- Title, Tags, Text -->
+
+<%= form_tag("/posts/#{@post.id}/update", method: :put, class: 'edit-form') do %>
+  <div class="edit-input">
+    <%= label_tag(:title, "Title: ") %>
+    <%= text_field_tag(:title, @post.title, size: 40) %>
+  </div>
+
+    <br/>
+
+  <div class="edit-input">
+    <%= label_tag(:tags, "Tags: ") %>
+    <%= text_field_tag(:tags, @post.tags.map { |tag| tag.name }, size: 40) %>
+  </div>
+
+    <br/> 
+
+  <div class="edit-input">
+    <%= label_tag(:content, "Content: ") %>
+    <br/>
+    <%= text_area_tag(:content, @post.content, rows: 40, cols: 80) %>
+  </div>
+
+    <br/>
+  
+  <div><%= submit_tag 'Save' %></div>
+<% end %>
+
+<br/>
+<div>
+  <%= link_to "Back", :back %>
+</div>
