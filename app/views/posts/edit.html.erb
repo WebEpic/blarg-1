@@ -2,7 +2,7 @@
 
 <!-- Title, Tags, Text -->
 
-<%= form_tag("/posts/#{@post.id}/update", method: :put, class: 'edit-form') do %>
+<%= form_tag(update_post_path(@post), method: :put, class: 'edit-form') do %>
   <div class="edit-input">
     <%= label_tag(:title, "Title: ") %>
     <%= text_field_tag(:title, @post.title, size: 40) %>
@@ -32,3 +32,5 @@
 <div>
   <%= link_to "Back", :back %>
 </div>
+
+<!-- "/post/#{@post.id}/update" -->

@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     @post = Post.find(params['id'])
     tags = params['tags'].split(", ")
     tag_models = tags.map { |tag| Tag.find_or_create_by(name: tag) }
-    @post = @post.update_attributes(title: params[:title],
+    @post.update_attributes(title: params[:title],
                                     content: params[:content],
                                     written_at: DateTime.now,
                                     tags: tag_models)
